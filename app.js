@@ -9,6 +9,19 @@
     /*this.config = function(newConfig) {
         config = angular.extend(config, newConfig);
     };*/
+                            
+    function watchExpr(attrName, ariaAttr, nodeBlackList, negate) {
+        return function(scope, elem, attr) { };
+    }
+                            
+    this.$get = function() {
+        return {
+            config: function(key) {
+            return config[key];
+        },
+        $$watchExpr: watchExpr
+        };
+    };
     
     AblLocalizeDropdownModule
         .controller('AblLocalizeDropdownController', AblLocalizeDropdownController)
