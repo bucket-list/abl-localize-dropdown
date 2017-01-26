@@ -14,7 +14,7 @@
         var directive = {
             restrict: 'E',
             scope: {},
-            template-url: 'template-url.html',
+            templateUrl: 'template-url.html',
             link: link,
             controller: controller
         };
