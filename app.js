@@ -1,20 +1,20 @@
 (function(window, angular) {'use strict';
     !function(a){if(!a.Localize){a.Localize={};for(var e=["translate","untranslate","phrase","initialize","translatePage","setLanguage","getLanguage","detectLanguage","untranslatePage","bootstrap","prefetch","on","off"],t=0;t<e.length;t++)a.Localize[e[t]]=function(){}}}(window);
-    Localize.initialize({key:"jb9Uvr8ct9xgK",rememberLanguage:true});
     angular
-        .module('AblLocalizeDropdown')
+        .module('AblLocalizeDropdown', [])
         .controller('AblLocalizeDropdownController', AblLocalizeDropdownController)
         .directive('ablLocalizeDropdownInit', ablLocalizeDropdownInit);
     
     function AblLocalizeDropdownController($scope){
         console.log("AblLocalizeDropdownController", $scope);
+        Localize.initialize({key:"jb9Uvr8ct9xgK",rememberLanguage:true});
     }
                             
     function ablLocalizeDropdownInit(){
         var directive = {
             restrict: 'E',
             scope: {},
-            template: '',
+            template-url: 'template-url.html',
             link: link,
             controller: controller
         };
