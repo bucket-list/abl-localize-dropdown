@@ -1,6 +1,16 @@
 (function(window, angular) {'use strict';
-    angular
-        .module('AblLocalizeDropdown', [])
+    var AblLocalizeDropdownModule = angular.module('AblLocalizeDropdown', [])
+        .provider('$localizeDropdown', $LocalizeDropdownProvider);
+    
+    function $LocalizeDropdownProvider(){
+        var config = localizeKey:
+    }
+                            
+    this.config = function(newConfig) {
+        config = angular.extend(config, newConfig);
+    };
+    
+    AblLocalizeDropdownModule
         .controller('AblLocalizeDropdownController', AblLocalizeDropdownController)
         .directive('ablLocalizeDropdownInit', ablLocalizeDropdownInit);
     
