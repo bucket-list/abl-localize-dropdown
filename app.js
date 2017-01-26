@@ -6,9 +6,9 @@
         var config = {localizeKey:'mykey'};
     }
                             
-    this.config = function(newConfig) {
+    /*this.config = function(newConfig) {
         config = angular.extend(config, newConfig);
-    };
+    };*/
     
     AblLocalizeDropdownModule
         .controller('AblLocalizeDropdownController', AblLocalizeDropdownController)
