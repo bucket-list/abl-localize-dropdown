@@ -3,7 +3,7 @@
         .provider('$localizeDropdown', $LocalizeDropdownProvider);
     
     function $LocalizeDropdownProvider(){
-        var config = localizeKey:
+        var config = {localizeKey:'mykey'};
     }
                             
     this.config = function(newConfig) {
