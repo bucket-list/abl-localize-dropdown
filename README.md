@@ -3,6 +3,9 @@ ABL Module for language
 
 ##Installation:
 
+###Bower and NPM
+```"abl-localize-dropdown": "https://github.com/bucket-list/abl-localize-dropdown"```
+
 ###Include CSS:
 ```<link rel="stylesheet" href="node_modules/abl-localize-dropdown/abl-localize-dropdown.css" type="text/css" />```
 
