@@ -1,0 +1,25 @@
+{
+  "name": "abl-localize-dropdown",
+  "homepage": "https://github.com/bucket-list/abl-localize-dropdown.git",
+  "description": "Adventure bucket list localize",
+  "main": ["abl-localize-dropdown.js"],
+
+  "version": "1.0.0",
+  "superversion": "0.0",
+  "subversion": 2,
+
+  "ignore": [
+    "node_modules",
+    ".gitignore",
+    "push",
+    "run"
+  ],
+  "moduleType": [],
+  "authors": [
+    "Bucket list"
+  ],
+    "dependencies": {
+    "angular": "~1.4.8"
+  },
+  "license": "MIT"
+}
