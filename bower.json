@@ -2,7 +2,7 @@
   "name": "abl-localize-dropdown",
   "homepage": "https://github.com/bucket-list/abl-localize-dropdown.git",
   "description": "Adventure bucket list localize",
-  "main": ["abl-localize-dropdown.js"],
+  "main": ["abl-localize-dropdown.js", "abl-localize-dropdown.css"],
 
   "version": "1.0.0",
   "superversion": "0.0",

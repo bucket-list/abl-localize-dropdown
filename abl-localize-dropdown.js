@@ -22,7 +22,7 @@
     function ablLocalizeDropdown() {
         var directive = {
             restrict: 'E',
-            scope: {
+          scope: {
                 width:'@',
                 flags:'='
             },
