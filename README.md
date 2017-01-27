@@ -7,13 +7,12 @@ ABL Module for language
 ```<link rel="stylesheet" href="node_modules/abl-localize-dropdown/abl-localize-dropdown.css" type="text/css" />```
 
 ###Include JS:
-```<script src="https://global.localizecdn.com/localize.js"></script>
-<script src="node_modules/abl-localize-dropdown/abl-localize-dropdown.js"></script>```
+```<script src="https://global.localizecdn.com/localize.js"></script>```
+```<script src="node_modules/abl-localize-dropdown/abl-localize-dropdown.js"></script>```
 
 ###Config module:
 ```.config(['localizeDropdownProvider', function(localizeDropdownProvider) {
-//key for tahiti marketplace	
-localizeDropdownProvider.setKey('yourkey');
+  localizeDropdownProvider.setKey('yourkey');
 }]);```
 
 ###Use:
