@@ -40,7 +40,7 @@
             controller: controller
         };
 
-        function controller($scope, localizeDropdown) {
+        function controller($scope, $rootScope, localizeDropdown) {
             Localize.initialize({
                 key: localizeDropdown.localizeKey,
                 rememberLanguage: true
@@ -59,6 +59,7 @@
                 Localize.setLanguage(lang.code);
                 $scope.currentLanguage = lang.name;
                 $scope.currentLanguageClass = lang.code;
+                $rootScope.$broadcast('language-updated', {lang:lang});
             }
         }
         return directive;
