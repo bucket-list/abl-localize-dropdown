@@ -8,6 +8,7 @@ md-menu-content.language-menu{padding: 0px;}
 md-menu-item.language-item{border-bottom: 1px solid #ddd;}
 md-menu.abl-menu-lang .md-button span{font-size: 12px !important;padding-top: 1px;display: inline-block;vertical-align: middle;}
 @media screen and (max-width: 599px){
+    md-menu.abl-menu-lang button.md-button{min-width:50px !important}
     md-menu.abl-menu-lang span.name{display: none !important}
 }
     
