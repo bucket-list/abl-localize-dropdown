@@ -29,7 +29,7 @@
             template: '<script>!function(a){if(!a.Localize){a.Localize={};for(var e=["translate","untranslate","phrase","initialize","translatePage","setLanguage","getLanguage","detectLanguage","getAvailableLanguages","untranslatePage","bootstrap","prefetch","on","off"],t=0;t<e.length;t++)a.Localize[e[t]]=function(){}}}(window);</script>' +
                 '<md-menu class="abl-menu-lang">' +
                 '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdOpenMenu($event)">' +
-                '<span ng-if="flags" class="flags"></span><span>{{currentLanguage}}</span>' +
+                '<span ng-if="flags" class="flags"></span><span class="name">{{currentLanguage}}</span>' +
                 '</md-button>' +
                 '<md-menu-content class="language-menu" width="{{width}}">' +
                 '<md-menu-item class="language-item" ng-repeat="item in languages">' +
