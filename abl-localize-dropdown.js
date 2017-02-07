@@ -1,19 +1,5 @@
 angular
     .module('AblLocalizeDropdown', [])
-    .factory()
-    .provider('$localizeDropdown', [function $localizeDropdownProvider() {
-        var config = {
-            localizeKey: 'mykey'
-        };
-        return {
-            setKey: function(value) {
-                config.localizeKey = value;
-            },
-            $get: function() {
-                return config;
-            }
-        }
-    }])
     .directive('ablLocalizeDropdown', ablLocalizeDropdown);
 
 var Localize = window.Localize;
@@ -25,8 +11,7 @@ function ablLocalizeDropdown() {
             width: '@',
             flags: '='
         },
-        template: '<script>!function(a){if(!a.Localize){a.Localize={};for(var e=["translate","untranslate","phrase","initialize","translatePage","setLanguage","getLanguage","detectLanguage","getAvailableLanguages","untranslatePage","bootstrap","prefetch","on","off"],t=0;t<e.length;t++)a.Localize[e[t]]=function(){}}}(window);</script>' +
-            '<md-menu class="abl-menu-lang">' +
+        template: '<md-menu class="abl-menu-lang">' +
             '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdOpenMenu($event)">' +
             '<span ng-if="flags" class="flags"></span><span class="name">{{currentLanguage}}</span>' +
             '</md-button>' +
@@ -40,10 +25,6 @@ function ablLocalizeDropdown() {
     };
 
     function controller($scope, $rootScope, $localizeDropdown) {
-        Localize.initialize({
-            key: $localizeDropdown.localizeKey,
-            rememberLanguage: true
-        });
         Localize.getAvailableLanguages(function(err, languages) {
             $scope.languages = languages;
             angular.forEach(languages, function(k, v) {
