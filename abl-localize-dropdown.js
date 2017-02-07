@@ -1,3 +1,4 @@
+/* global angular */
 angular
     .module('AblLocalizeDropdown', [])
     .directive('ablLocalizeDropdown', ablLocalizeDropdown);
@@ -21,11 +22,12 @@ function ablLocalizeDropdown() {
             '</md-menu-item>' +
             '</md-menu-content>' +
             '</md-menu>',
-        controller: controller
+        controller: [ '$scope', '$rootScope', controller ]
     };
 
-    function controller($scope, $rootScope, $localizeDropdown) {
+    function controller($scope, $rootScope) {
         Localize.getAvailableLanguages(function(err, languages) {
+            if (err) return console.log ("error", err);
             $scope.languages = languages;
             angular.forEach(languages, function(k, v) {
                 if (k.code === Localize.getLanguage()) {
