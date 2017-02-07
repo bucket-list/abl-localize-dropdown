@@ -1,6 +1,19 @@
 /* global angular */
 angular
     .module('AblLocalizeDropdown', [])
+    .provider('$localizeDropdown', [function $localizeDropdownProvider() {
+        var config = {
+            localizeKey: 'mykey'
+        };
+        return {
+            setKey: function(value) {
+                config.localizeKey = value;
+            },
+            $get: function() {
+                return config;
+            }
+        }
+    }])
     .directive('ablLocalizeDropdown', ablLocalizeDropdown);
 
 var Localize = window.Localize;
@@ -22,10 +35,15 @@ function ablLocalizeDropdown() {
             '</md-menu-item>' +
             '</md-menu-content>' +
             '</md-menu>',
-        controller: [ '$scope', '$rootScope', controller ]
+        controller: [ '$scope', '$rootScope', '$localizeDropdown', controller ]
     };
 
-    function controller($scope, $rootScope) {
+    function controller($scope, $rootScope, $localizeDropdown) {
+        Localize.initialize({
+            key: $localizeDropdown.localizeKey,
+            rememberLanguage: true
+        });
+
         Localize.getAvailableLanguages(function(err, languages) {
             if (err) return console.log ("error", err);
             $scope.languages = languages;
