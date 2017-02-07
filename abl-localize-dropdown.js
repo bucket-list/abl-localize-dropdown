@@ -16,6 +16,8 @@ angular
     }])
     .directive('ablLocalizeDropdown', ablLocalizeDropdown);
 
+var Localize = window.Localize;
+
 function ablLocalizeDropdown() {
     var directive = {
         restrict: 'E',
@@ -38,11 +40,11 @@ function ablLocalizeDropdown() {
     };
 
     function controller($scope, $rootScope, $localizeDropdown) {
-        Localize.initialize({
+        window.Localize.initialize({
             key: $localizeDropdown.localizeKey,
             rememberLanguage: true
         });
-        Localize.getAvailableLanguages(function(err, languages) {
+        window.Localize.getAvailableLanguages(function(err, languages) {
             $scope.languages = languages;
             angular.forEach(languages, function(k, v) {
                 if (k.code === Localize.getLanguage()) {
@@ -53,7 +55,7 @@ function ablLocalizeDropdown() {
         });
 
         $scope.setCurrentLanguage = function(lang) {
-            Localize.setLanguage(lang.code);
+            window.Localize.setLanguage(lang.code);
             $scope.currentLanguage = lang.name;
             $scope.currentLanguageClass = lang.code;
             $rootScope.$broadcast('language-updated', {
