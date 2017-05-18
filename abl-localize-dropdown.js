@@ -1,4 +1,3 @@
-import styles from './abl-localize-dropdown.css';
 angular
   .module('AblLocalizeDropdown', [])
   .provider('$localizeDropdown', [function $localizeDropdownProvider() {
