@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ac9c257fb5ccebe2c78e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6cc7593dd8da664e6739"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -616,7 +616,7 @@
 	      width: '@',
 	      flags: '='
 	    },
-	    template: '<md-menu class="abl-menu-lang">' + '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdOpenMenu($event)">' + '<span ng-if="flags" class="flags"></span><span class="name">{{currentLanguage}}</span>' + '</md-button>' + '<md-menu-content class="language-menu" width="{{width}}">' + '<md-menu-item class="language-item" ng-repeat="item in languages">' + '<md-button ng-click="setCurrentLanguage(item)">{{item.name}}</md-button>' + '</md-menu-item>' + '</md-menu-content>' + '</md-menu>',
+	    template: '<md-menu class="abl-menu-lang">' + '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdMenu.open($event)">' + '<span ng-if="flags" class="flags"></span><span class="name">{{currentLanguage}}</span>' + '</md-button>' + '<md-menu-content class="language-menu" width="{{width}}">' + '<md-menu-item class="language-item" ng-repeat="item in languages">' + '<md-button ng-click="setCurrentLanguage(item)">{{item.name}}</md-button>' + '</md-menu-item>' + '</md-menu-content>' + '</md-menu>',
 	    controller: ['$scope', '$rootScope', '$localizeDropdown', controller]
 	  };
 	

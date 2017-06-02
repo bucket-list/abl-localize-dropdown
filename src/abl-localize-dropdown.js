@@ -26,7 +26,7 @@ function ablLocalizeDropdown() {
       flags: '='
     },
     template: '<md-menu class="abl-menu-lang">' +
-      '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdOpenMenu($event)">' +
+      '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdMenu.open($event)">' +
       '<span ng-if="flags" class="flags"></span><span class="name">{{currentLanguage}}</span>' +
       '</md-button>' +
       '<md-menu-content class="language-menu" width="{{width}}">' +
