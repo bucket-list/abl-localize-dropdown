@@ -1,6 +1,6 @@
 {
   "name": "abl-localize-dropdown",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "Localize module for ABL",
   "main": "abl-localize-dropdown.js",
   "repository": {
@@ -57,5 +57,11 @@
     "gulp-wait": "0.0.2",
     "html-loader": "^0.4.5",
     "ng-annotate-loader": "^0.2.0"
+  },
+  "scripts": {
+    "pull": "git checkout master && git pull origin master",
+    "push": "git push origin master --tags && npm publish",
+    "commit": "git commit -a -m ${1}",
+    "release": "release () { npm run pull && if [ -z $1 ]; then npm version patch; else npm version $1; fi && npm run push; }; release"
   }
 }
