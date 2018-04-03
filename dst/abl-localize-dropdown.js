@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6cc7593dd8da664e6739"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d579da709655aea39ce8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -614,16 +614,33 @@
 	    restrict: 'E',
 	    scope: {
 	      width: '@',
-	      flags: '='
+	      flags: '=',
+	      label: '=',
+	      arrow: '='
 	    },
-	    template: '<md-menu class="abl-menu-lang">' + '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="$mdMenu.open($event)">' + '<span ng-if="flags" class="flags"></span><span class="name">{{currentLanguage}}</span>' + '</md-button>' + '<md-menu-content class="language-menu" width="{{width}}">' + '<md-menu-item class="language-item" ng-repeat="item in languages">' + '<md-button ng-click="setCurrentLanguage(item)">{{item.name}}</md-button>' + '</md-menu-item>' + '</md-menu-content>' + '</md-menu>',
-	    controller: ['$scope', '$rootScope', '$localizeDropdown', controller]
+	    template: '<md-menu class="abl-menu-lang">' + '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="openMenuLanguage($mdMenu, $mdOpenMenu, $event)">' + '<span ng-if="flags" class="flags"></span><span class="name" ng-if="vm.label">{{currentLanguage}}</span> <i ng-if="vm.arrow" class="fa fa-caret-down" aria-hidden="true"></i>' + '</md-button>' + '<md-menu-content class="language-menu" width="{{vm.width}}">' + '<md-menu-item class="language-item" ng-repeat="item in languages">' + '<md-button ng-click="setCurrentLanguage(item)"><span><var>{{item.name}}</var></span></md-button>' + '</md-menu-item>' + '</md-menu-content>' + '</md-menu>',
+	    controller: ['$scope', '$rootScope', '$localizeDropdown', controller],
+	    controllerAs: 'vm'
 	  };
 	
-	  function controller($scope, $rootScope, $localizeDropdown) {
-	    Localize.initialize({
-	      key: $localizeDropdown.localizeKey,
-	      rememberLanguage: true
+	  function controller($scope, $rootScope, $mdMenu, $mdOpenMenu, $localizeDropdown) {
+	    var vm = this;
+	    vm.width = $scope.width || 3;
+	    vm.flags = $scope.flags || true;
+	    vm.label = $scope.label || true;
+	    vm.arrow = $scope.arrow || true;
+	
+	    console.log('$localizeDropdown', $localizeDropdown);
+	
+	    $scope.$watch(function () {
+	      return $localizeDropdown;
+	    }, function (n, o) {
+	      if (n) {
+	        Localize.initialize({
+	          key: $localizeDropdown.localizeKey,
+	          rememberLanguage: true
+	        });
+	      }
 	    });
 	
 	    Localize.getAvailableLanguages(function (err, languages) {
@@ -644,6 +661,14 @@
 	      $rootScope.$broadcast('language-updated', {
 	        lang: lang
 	      });
+	    };
+	
+	    $scope.openMenuLanguage = function ($mdMenu, $mdOpenMenu, event) {
+	      if ($mdMenu) {
+	        $mdMenu.open(event);
+	      } else {
+	        $mdOpenMenu(event);
+	      }
 	    };
 	  }
 	  return directive;
@@ -679,7 +704,7 @@
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(3)(undefined);
+	exports = module.exports = __webpack_require__(3)(false);
 	// imports
 	
 	
