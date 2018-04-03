@@ -1,6 +1,6 @@
 {
   "name": "abl-localize-dropdown",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Localize module for ABL",
   "main": "abl-localize-dropdown.js",
   "repository": {
