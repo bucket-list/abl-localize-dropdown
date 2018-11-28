@@ -22,6 +22,10 @@ md-menu.abl-menu-lang .md-button.es span.flags {
     background-position: -192px -33px;
 }
 
+md-menu.abl-menu-lang .md-button.es-LA span.flags {
+    background-position: -192px -33px;
+}
+
 md-menu.abl-menu-lang .md-button.fr span.flags {
     background-position: -48px -44px;
 }

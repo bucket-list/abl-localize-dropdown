@@ -33,22 +33,22 @@ function ablLocalizeDropdown() {
       '</md-button>' +
       '<md-menu-content class="language-menu" width="{{vm.width}}">' +
       '<md-menu-item class="language-item" ng-repeat="item in languages">' +
-      '<md-button ng-click="setCurrentLanguage(item)"><span><var>{{item.name}}</var></span></md-button>' +
+      '<md-button ng-click="setCurrentLanguage(item)"><div><var>{{item.name}}</var></div></md-button>' +
       '</md-menu-item>' +
       '</md-menu-content>' +
       '</md-menu>',
-    controller: ['$scope', '$rootScope', '$localizeDropdown', controller],
+    controller: ['$scope', '$rootScope', '$mdMenu', '$localizeDropdown', '$log', controller],
     controllerAs: 'vm'
   };
 
-  function controller($scope, $rootScope, $mdMenu, $mdOpenMenu, $localizeDropdown) {
+  function controller($scope, $rootScope, $mdMenu, $localizeDropdown, $log) {
     var vm = this;
     vm.width = $scope.width || 3;
     vm.flags = $scope.flags || true;
     vm.label = $scope.label || true;
     vm.arrow = $scope.arrow || true;
 
-    console.log('$localizeDropdown', $localizeDropdown);
+    $log.debug('$localizeDropdown', $localizeDropdown);
 
     $scope.$watch(function() {
       return $localizeDropdown
@@ -62,8 +62,10 @@ function ablLocalizeDropdown() {
     });
 
     Localize.getAvailableLanguages(function(err, languages) {
-      if (err) return console.log("error", err);
+      if (err) return $log.debug("error", err);
+      
       $scope.languages = languages;
+      $log.debug('languages', languages, Localize.getLanguage());
       angular.forEach(languages, function(k, v) {
         if (k.code === Localize.getLanguage()) {
           $scope.currentLanguage = k.name
