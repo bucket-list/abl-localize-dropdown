@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d579da709655aea39ce8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bbbfa62fcf8cd827464f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -618,19 +618,19 @@
 	      label: '=',
 	      arrow: '='
 	    },
-	    template: '<md-menu class="abl-menu-lang">' + '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="openMenuLanguage($mdMenu, $mdOpenMenu, $event)">' + '<span ng-if="flags" class="flags"></span><span class="name" ng-if="vm.label">{{currentLanguage}}</span> <i ng-if="vm.arrow" class="fa fa-caret-down" aria-hidden="true"></i>' + '</md-button>' + '<md-menu-content class="language-menu" width="{{vm.width}}">' + '<md-menu-item class="language-item" ng-repeat="item in languages">' + '<md-button ng-click="setCurrentLanguage(item)"><span><var>{{item.name}}</var></span></md-button>' + '</md-menu-item>' + '</md-menu-content>' + '</md-menu>',
-	    controller: ['$scope', '$rootScope', '$localizeDropdown', controller],
+	    template: '<md-menu class="abl-menu-lang">' + '<md-button class="{{currentLanguageClass}}" aria-label="Languages" ng-click="openMenuLanguage($mdMenu, $mdOpenMenu, $event)">' + '<span ng-if="flags" class="flags"></span><span class="name" ng-if="vm.label">{{currentLanguage}}</span> <i ng-if="vm.arrow" class="fa fa-caret-down" aria-hidden="true"></i>' + '</md-button>' + '<md-menu-content class="language-menu" width="{{vm.width}}">' + '<md-menu-item class="language-item" ng-repeat="item in languages">' + '<md-button ng-click="setCurrentLanguage(item)"><div><var>{{item.name}}</var></div></md-button>' + '</md-menu-item>' + '</md-menu-content>' + '</md-menu>',
+	    controller: ['$scope', '$rootScope', '$mdMenu', '$localizeDropdown', '$log', controller],
 	    controllerAs: 'vm'
 	  };
 	
-	  function controller($scope, $rootScope, $mdMenu, $mdOpenMenu, $localizeDropdown) {
+	  function controller($scope, $rootScope, $mdMenu, $localizeDropdown, $log) {
 	    var vm = this;
 	    vm.width = $scope.width || 3;
 	    vm.flags = $scope.flags || true;
 	    vm.label = $scope.label || true;
 	    vm.arrow = $scope.arrow || true;
 	
-	    console.log('$localizeDropdown', $localizeDropdown);
+	    $log.debug('$localizeDropdown', $localizeDropdown);
 	
 	    $scope.$watch(function () {
 	      return $localizeDropdown;
@@ -644,8 +644,10 @@
 	    });
 	
 	    Localize.getAvailableLanguages(function (err, languages) {
-	      if (err) return console.log("error", err);
+	      if (err) return $log.debug("error", err);
+	
 	      $scope.languages = languages;
+	      $log.debug('languages', languages, Localize.getLanguage());
 	      angular.forEach(languages, function (k, v) {
 	        if (k.code === Localize.getLanguage()) {
 	          $scope.currentLanguage = k.name;
@@ -709,7 +711,7 @@
 	
 	
 	// module
-	exports.push([module.id, "#localize-widget {\n    display: none !important;\n}\n\nmd-menu.abl-menu-lang {\n    font-size: 11px;\n}\n\nmd-menu.abl-menu-lang .md-button span.flags {\n    width: 16px;\n    height: 11px;\n    display: inline-block;\n    margin-right: 3px;\n    background: #fff scroll no-repeat url('https://assets.ablsolution.com/images/flags.png') 0 0;\n}\n\nmd-menu.abl-menu-lang .md-button.en span.flags {\n    background-position: -80px -44px;\n}\n\nmd-menu.abl-menu-lang .md-button.es span.flags {\n    background-position: -192px -33px;\n}\n\nmd-menu.abl-menu-lang .md-button.fr span.flags {\n    background-position: -48px -44px;\n}\n\nmd-menu-content.language-menu {\n    padding: 0px;\n}\n\nmd-menu-item.language-item {\n    border-bottom: 1px solid #ddd;\n}\n\nmd-menu.abl-menu-lang .md-button span {\n    font-size: 12px !important;\n    padding-top: 1px;\n    display: inline-block;\n    vertical-align: middle;\n}\n\n@media screen and (max-width: 599px) {\n    md-menu.abl-menu-lang button.md-button {\n        min-width: 50px !important\n    }\n    md-menu.abl-menu-lang span.name {\n        display: none !important\n    }\n}", ""]);
+	exports.push([module.id, "#localize-widget {\n    display: none !important;\n}\n\nmd-menu.abl-menu-lang {\n    font-size: 11px;\n}\n\nmd-menu.abl-menu-lang .md-button span.flags {\n    width: 16px;\n    height: 11px;\n    display: inline-block;\n    margin-right: 3px;\n    background: #fff scroll no-repeat url('https://assets.ablsolution.com/images/flags.png') 0 0;\n}\n\nmd-menu.abl-menu-lang .md-button.en span.flags {\n    background-position: -80px -44px;\n}\n\nmd-menu.abl-menu-lang .md-button.es span.flags {\n    background-position: -192px -33px;\n}\n\nmd-menu.abl-menu-lang .md-button.es-LA span.flags {\n    background-position: -192px -33px;\n}\n\nmd-menu.abl-menu-lang .md-button.fr span.flags {\n    background-position: -48px -44px;\n}\n\nmd-menu-content.language-menu {\n    padding: 0px;\n}\n\nmd-menu-item.language-item {\n    border-bottom: 1px solid #ddd;\n}\n\nmd-menu.abl-menu-lang .md-button span {\n    font-size: 12px !important;\n    padding-top: 1px;\n    display: inline-block;\n    vertical-align: middle;\n}\n\n@media screen and (max-width: 599px) {\n    md-menu.abl-menu-lang button.md-button {\n        min-width: 50px !important\n    }\n    md-menu.abl-menu-lang span.name {\n        display: none !important\n    }\n}", ""]);
 	
 	// exports
 
